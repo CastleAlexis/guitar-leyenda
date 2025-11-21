@@ -115,6 +115,53 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff6a #0a0a0a;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #00ff6a;
+  border-radius: 9999px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal {
+  background: #111;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
 @keyframes fadeUp {
