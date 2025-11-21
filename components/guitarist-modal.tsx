@@ -113,4 +113,3 @@ export function GuitaristModal({ guitarist, onClose }: GuitaristModalProps) {
     </Dialog>
   )
 }
-

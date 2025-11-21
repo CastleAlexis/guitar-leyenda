@@ -1,0 +1,12 @@
+{
+  "name": "Guitar Leyenda Dev",
+  "sandbox_mode": "workspace-write",
+  "network_access": "enabled",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "openai.openai-codex"
+      ]
+    }
+  }
+}

@@ -98,4 +98,3 @@ export function ContactSection() {
     </section>
   )
 }
-

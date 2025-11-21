@@ -1,8 +1,8 @@
 "use client"
 
+import Image from "next/image"
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-// Using native img for consistent coverage on some JPGs
 import { GuitaristModal } from "@/components/guitarist-modal"
 import { guitarists, type Guitarist } from "@/lib/guitarists"
 
@@ -22,32 +22,36 @@ export function GallerySection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {guitarists.map((guitarist) => (
+          <div
+            className="grid gap-4 justify-center"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}
+          >
+            {guitarists.map((guitarist, index) => (
               <Card
                 key={guitarist.id}
-                className="bg-card border-border overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:border-primary hover:shadow-lg hover:shadow-primary/20"
+                className="group bg-card border-border overflow-hidden rounded-[18px] cursor-pointer transition-all duration-300 opacity-0 motion-safe:animate-[fadeUp_0.6s_ease-out_forwards] hover:-translate-y-1 hover:scale-[1.02] hover:border-primary hover:shadow-[0_15px_35px_rgba(0,0,0,0.35)] hover:shadow-primary/25"
+                style={{ animationDelay: `${index * 80}ms` }}
                 onClick={() => setSelectedGuitarist(guitarist)}
               >
-                <div className="relative aspect-square overflow-hidden">
-                  <div
-                    aria-label={guitarist.name}
-                    className={`absolute inset-0 bg-center transition-transform duration-300 hover:scale-110 ${
-                      guitarist.id === '1' || guitarist.name === 'Paul Gilbert' ? 'scale-[1.10]' : ''
-                    }`}
-                    style={{
-                      backgroundImage: `url("${guitarist.image || '/placeholder.svg'}")`,
-                      backgroundSize: 'cover',
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: 'center',
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                <div className="relative h-[160px] md:h-[190px] lg:h-[210px] overflow-hidden">
+                  <div className="absolute inset-0">
+                    <Image
+                      src={guitarist.image || "/placeholder.svg"}
+                      alt={guitarist.name}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                      priority={guitarist.id === "1"}
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/60 via-card/30 to-transparent" />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{guitarist.name}</h3>
-                  <p className="text-primary font-semibold mb-1 whitespace-pre-line">{guitarist.band}</p>
-                  <p className="text-muted-foreground">{guitarist.style}</p>
+                <CardContent className="p-4 space-y-2">
+                  <h3 className="text-sm font-bold text-foreground">{guitarist.name}</h3>
+                  <p className="text-primary font-semibold whitespace-pre-line text-[11px] leading-tight">
+                    {guitarist.band}
+                  </p>
+                  <p className="text-muted-foreground text-[11px] leading-tight">{guitarist.style}</p>
                 </CardContent>
               </Card>
             ))}
