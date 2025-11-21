@@ -32,7 +32,7 @@ export function ContactSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Tu opinión <span className="text-primary">importa</span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground">¿Qué guitarrista agregarías a la galería?</p>
+          <p className="text-base md:text-lg text-muted-foreground">¿Qué guitarrista agregarías a la Galería?</p>
         </div>
 
         <div className="group rounded-2xl bg-card/90 border border-primary/30 shadow-[0_10px_35px_rgba(0,0,0,0.35)] shadow-primary/10 p-6 md:p-8 motion-safe:animate-[fadeUp_0.6s_ease-out_forwards]">
@@ -77,7 +77,7 @@ export function ContactSection() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 required
                 className="rounded-xl bg-background/80 border border-primary/30 text-foreground min-h-32 focus:border-primary focus:ring-2 focus:ring-primary/50 focus:outline-none transition-all"
-                placeholder="Cuéntanos qué guitarrista te gustaría ver en la galería..."
+                placeholder="Cuéntanos qué guitarrista te gustaría ver en la Galería..."
               />
             </div>
 
